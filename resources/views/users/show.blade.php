@@ -1,25 +1,26 @@
 @extends('layouts.global')
 
-@section('title') Detail User @endsection
+@section('title') Detail user @endsection
 
 @section('content')
+    <h1 class="mb-4">User Detail Info</h1>
 
 <div class="col-md-8">
     <div class="card">
         <div class="card-body">
-            <b>name</b> <br/>
-            {{$user->name}}
+            <b>Name:</b> <br/>
+            {{ $user->name }}
             <br><br>
 
             @if($user->avatar)
-                <img src="{{asset('storage/', $user->avatar)}}" width="128px"/>
+            <img src="{{asset('storage/'. $user->avatar)}}" width="128px"/>
             @else
-                No Avatar
+            No avatar
             @endif
 
             <br>
             <br>
-            <b>Username</b> <br>
+            <b>Username</b><br>
             {{$user->email}}
 
             <br>
@@ -29,13 +30,12 @@
 
             <br><br>
             <b>Address</b>
-            {{$user->addres}}
+            {{$user->address}}
 
             <br>
             <br>
-            <b>Roles</b> <br>
-            @foreach(json_decode($user->roles) as $role)
-                &middot; {{$role}} <br>
+            <b>Roles:</b> <br>
+            @foreach (json_decode($user->roles) as $role)&middot: {{$role}} <br>
             @endforeach
         </div>
     </div>
