@@ -67,6 +67,9 @@ hr+.display-2+.display-3 {
                                     <span class="oi oi-people"></span> Manage Users
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{route('users.create') }}"> <span class="oi oi-plus"></span>Add User</a>
+                            </li>
                             <div class="d-block d-md-none">
                                 <div class="dropdown-divider"></div>
                                     <li><a href="#"> Profile</a></li>
