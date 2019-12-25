@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 Route::match(["GET", "POST"], "/register", function(){
     return redirect("/login");
     })->name("register");
@@ -24,4 +25,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource("users", "UserController");
 
 //categories
+Route::get('/categories/trash', 'CategoryController@trash')->name('categories.trash');
+Route::get('/categories/{id}/restore', 'CategoryController@restore')->name('categories.restore');
+Route::delete('/categories/{id}/delete-permanent', 'CategoryController@deletePermanent')->name('categories.delete-permanent');
+Route::get('/ajax/categories/search', 'CategoryController@ajaxSearch');
 Route::resource('categories', 'CategoryController');
+
+//book
+Route::get('/books/trash', 'BookController@trash')->name('books.trash');
+Route::resource('books', 'BookController');
