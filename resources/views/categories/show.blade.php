@@ -1,16 +1,20 @@
 @extends('layouts.global')
 
-@section('title') Detail category @endsection
+@section('title') Detal Category @endsection
 
 @section('content')
 <div class="col-md-8">
     <div class="card">
         <div class="card-body">
-            <label><b>Category name</b></label><br>
-                {{$category->name}} <br><br>
-            <label><b>Category slug</b></label><br>
-                {{$category->slug}} <br><br>
-            <label><b>Category image</b></label><br>
+            <label for="name"> <b>Category Name</b></label><br>
+            {{$category->name}}
+            <br><br>
+
+            <label for="slug"><b>Category Slug</b></label><br>
+            {{$category->slug}}
+            <br><br>
+
+            <label for="image"><b>Category Image</b></label><br>
             @if($category->image)
                 <img src="{{asset('storage/' . $category->image)}}" width="120px">
             @endif
