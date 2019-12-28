@@ -25,7 +25,7 @@ class CreateBookTable extends Migration
             $table->integer('views')->default(0)->unsigned();
             $table->integer('stock')->default(0)->unsigned();
             $table->enum('status', ['PUBLISH', 'DRAFT']);
-            $table->integer('created_by');
+            $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
             

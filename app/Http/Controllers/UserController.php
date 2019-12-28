@@ -133,13 +133,16 @@ class UserController extends Controller
         $user->roles = json_encode($request->get('roles'));
         $user->address = $request->get('address');
         $user->phone = $request->get('phone');
-
-        if($user->avatar && file_exists(storage_path('app/public/' . $user->avatar))){
-            \Storage::delete('public/'.$user->avatar);
-        $file = $request->file('avatar')->store('avatars', 'public');
-        $user->avatar = $file;
-        }
-        $user->save();
+        
+        
+            if($user->avatar && file_exists(storage_path('app/public/' . $user->avatar)))
+            {
+                \Storage::delete('public/'.$user->avatar);
+                $file = $request->file('avatar')->store('avatars', 'public');
+                $user->avatar = $file;
+            }
+        
+            $user->save();
         return redirect()->route('users.edit', ['id' => $id])->with('status', 'User succesfully updated');
     }
 

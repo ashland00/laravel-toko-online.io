@@ -33,4 +33,5 @@ Route::resource('categories', 'CategoryController');
 
 //book
 Route::get('/books/trash', 'BookController@trash')->name('books.trash');
+Route::delete('/books/{id}/delete-permanent', 'BookController@deletePermanent')->name('books.delete-permanent');
 Route::resource('books', 'BookController');

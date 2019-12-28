@@ -59,7 +59,15 @@
                         <td>{{$book->stock}}</td>
                         <td>{{$book->price}}</td>
                         <td>
-                            [TODO: actions]
+                            <form method="post" action="{{route('books.restore', ['id' => $book->id])}}" class="d-inline">
+                            @csrf
+                                <input type="submit" value="Restore" class="btn btn-light">
+                            </form>
+                            <form method="post" action="{{route('books.delete-permanent', ['id' => $book->id])}}" class="d-inline" onsubmit="return confirm('Delete this book permanently')">
+                                @csrf
+                                <!-- <input type="hidden" name="_method" value="delete"> -->
+                                <input type="submit" value="delete" class="btn btn-danger btn-sm">
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -75,3 +83,6 @@
     </div>
 </div>
 @endsection
+
+
+<!-- Selanjutnya kita buat fitur delete permanent, hal 277 "delete permanent" -->

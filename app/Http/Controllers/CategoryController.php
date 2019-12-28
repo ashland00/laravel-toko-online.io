@@ -17,7 +17,7 @@ class CategoryController extends Controller
         $filterKeyword = $request->get('name');
         
         if($filterKeyword){
-        $categories = \App\Category::where("name", "LIKE", "%$filterKeyword%")->paginate(10);
+            $categories = \App\Category::where("name", "LIKE", "%$filterKeyword%");
         }
         return view('categories.index', ['categories' => $categories]);
     }
@@ -47,7 +47,7 @@ class CategoryController extends Controller
 
         if($request->file('image')){
         $image_path = $request->file('image')
-        ->store('category_images', 'public');
+            ->store('category_images', 'public');
         $new_category->image = $image_path;
         }
         
@@ -55,7 +55,7 @@ class CategoryController extends Controller
         $new_category->slug = str_slug($name, '-');
         
         $new_category->save();
-        return redirect()->route('categories.create')->with('status', 'Category
+        return redirect()->route('categories.index')->with('status', 'Category
         successfully created');
     }
 
@@ -129,6 +129,7 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('categories.index')->with('status', 'Category successfully moved to trash');
     }
+
     public function trash()
     {
         $deleted_category = \App\Category::onlyTrashed()->paginate(10);
